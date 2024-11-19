@@ -35,4 +35,14 @@ public class PlayerController : MonoBehaviour
         _audio.Play();
         gameObject.SetActive(false);
     }
+
+    //플레이어 이동
+    private void Update()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+        transform.Translate(movement * Time.deltaTime * 10f);
+    }
 }
