@@ -10,7 +10,9 @@ public class Gun : MonoBehaviour
     
     public void Fire(Transform origin)
     {
-        Ray ray = new(origin.position, Vector3.forward);
+        //쏘는 방향도 origin 방향으로 수정
+        //_targetLayer가 nothing으로 되어있었음 Enemy로 수정 
+        Ray ray = new(origin.position, origin.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, _range, _targetLayer))
