@@ -11,4 +11,19 @@
 제시된 프로젝트에서 발생하는 `문제들을 모두 서술`하고 올바르게 동작하도록 `소스코드를 개선`하시오.
 
 ## 답안
-- 
+- 카메라 위치 수정: 플레이어 자식으로 변경
+- 레이캐스트 발사 오류
+  1. 레이캐스트를 발사하는 방향도 위치 설정해주었을 때처럼 origin으로 해야 함
+  2. _targetLayer가 nothing으로 되어있었음 Enemy로 수정
+```
+public void Fire(Transform origin)
+{ 
+    Ray ray = new(origin.position, origin.forward);
+    RaycastHit hit;
+
+    if (Physics.Raycast(ray, out hit, _range, _targetLayer))
+    {
+        Debug.Log($"{hit.transform.name} Hit!!");
+    }
+}
+```
