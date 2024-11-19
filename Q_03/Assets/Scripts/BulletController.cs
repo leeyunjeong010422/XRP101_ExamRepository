@@ -22,13 +22,13 @@ public class BulletController : PooledBehaviour
         StartCoroutine(DeactivateRoutine());
     }
 
+    //NullReferenceException: Object reference not set to an instance of an object 오류 발생으로 코드 수정
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        PlayerController playerController = other.GetComponent<PlayerController>();
+        if (playerController != null)
         {
-            other
-                .GetComponent<PlayerController>()
-                .TakeHit(_damageValue);
+            playerController.TakeHit(_damageValue);
         }
     }
 
