@@ -41,7 +41,7 @@ public class TurretController : MonoBehaviour
 
     private IEnumerator FireRoutine(Transform target)
     {
-        while (true)
+        while (target != null && target.gameObject.activeSelf)
         {
             yield return _wait;
 
