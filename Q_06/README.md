@@ -27,3 +27,5 @@ public void Fire(Transform origin)
     }
 }
 ```
+
+### 카메라 상하로 움직이지 못하는데 해결하지 못하였음
