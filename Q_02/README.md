@@ -11,4 +11,28 @@
 두 가지 문제가 발생한 원인과 해결 방법을 모두 서술하시오.
 
 ## 답안
-- 
+#### 1번 문제 원인과 해결방법
+```
+public float MoveSpeed
+{
+    get => MoveSpeed;
+    private set => MoveSpeed = value;
+}
+```
+이 코드에서 get, set 메서드가 자기 자신을 참조하고 있기 때문에 무한 호출되는 것
+따라서 아래 코드로 수정하여 _moveSpeed를 호출하게 함으로써 Stack Overflow해결
+```
+private float _moveSpeed;
+
+public float MoveSpeed
+{
+    get => _moveSpeed;
+    set => _moveSpeed = value;
+}
+```
+#### 2번 문제 원인과 해결방법
+정규화가 되어 있지 않아 발생하는 문제임
+```
+direction = direction.normalized;
+```
+으로 해결
