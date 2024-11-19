@@ -9,14 +9,18 @@ public class CubeManager : MonoBehaviour
     private CubeController _cubeController;
     private Vector3 _cubeSetPoint;
 
+    //_cubeSetPoint를 초기화 후에 SetCubePosition를 사용해야 함
     private void Awake()
     {
-        SetCubePosition(3, 0, 3);
+        _cubeSetPoint = new Vector3(3, 0, 3);
     }
 
     private void Start()
     {
         CreateCube();
+
+        //SetCubePosition로 큐브 위치 설정
+        SetCubePosition(_cubeSetPoint.x, _cubeSetPoint.y, _cubeSetPoint.z);
     }
 
     private void SetCubePosition(float x, float y, float z)
